@@ -3,3 +3,5 @@
 .Python
 *.pyc
 *~
+.python-version
+**.ipynb_checkpoints
