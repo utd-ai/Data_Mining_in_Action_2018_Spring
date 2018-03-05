@@ -1,0 +1,22 @@
+# Ignore idea files:
+.idea/
+out/
+*.iws
+*.iml
+
+# Ignore Jupyter Notebook and python files
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+*.so
+target/
+*.log
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
