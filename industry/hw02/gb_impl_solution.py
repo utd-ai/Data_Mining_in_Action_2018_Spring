@@ -18,6 +18,7 @@ class SimpleGB(BaseEstimator):
     def fit(self, X_data, y_data):
         self.base_algo = LogisticRegression(C=0.0005).fit(X_data, y_data)
         self.estimators = []
+        # p = 1 / (1 + exp(-a)) => a = - ln (1 / p - 1) = ln(p / (1 - p))
         curr_pred = - np.log(1. / self.base_algo.predict_proba(X_data)[:, 1] - 1)
 
         for iter_num in range(self.iters):
@@ -39,4 +40,4 @@ class SimpleGB(BaseEstimator):
         res = - np.log(1. / self.base_algo.predict_proba(X_data)[:, 1] - 1)
         for estimator in self.estimators:
             res += self.tau * estimator.predict(X_data)
-        return res > 0.1
+        return res > 0.1 # этот порог можно варировать с целью повышения метрики
