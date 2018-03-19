@@ -6,6 +6,8 @@
 
 Нужно подобрать оптимальные параметры pipeline с линейными моделями и векторизацией текстов. Код для проверки качества представлен в скрипте text_classification_params_checker.py, а пример набора параметров в text_classification_params_example.json. Чекер с вашими параметрами должен отработать за 1 минуту на машинке для проверки. Для сравнения на text_classification_params_example.json чекер работает 15 секунд.
 
+Обратите внимание на блокнот https://github.com/applied-data-science/Data_Mining_in_Action_2018_Spring/blob/master/industry/seminar03/TextClassification.ipynb - он поможет вам решить эту задачу
+
 ## Часть 2
 
 Нужно реализовать логистическую регрессию для решения задачи классификации. Код для проверки качества представлен в  скрипте logistic_regression_checker.py, а шаблон, от которого стоит отталкиваться, в скрипте logistic_regression_example.py. Чекер вашего скрипта должен отработать за 1 минуту на машинке для проверки. Для сравнения на logistic_regression_example.py чекер работает 2 секунды.
