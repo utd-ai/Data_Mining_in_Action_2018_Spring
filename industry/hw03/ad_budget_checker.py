@@ -1,3 +1,5 @@
+#coding=utf-8
+
 from sklearn.datasets import make_classification
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import mean_squared_error
@@ -40,7 +42,7 @@ class Checker(object):
     def check(self, script_path):
         try:
             signal.signal(signal.SIGALRM, signal_handler)
-            signal.alarm(20)
+            signal.alarm(120)
             algo_impl = imp.load_source('algo_impl_{}'.format(self.applications), script_path)
             self.applications += 1
             algo = algo_impl.Optimizer()

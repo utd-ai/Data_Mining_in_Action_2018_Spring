@@ -1,3 +1,5 @@
+#coding=utf-8
+
 from sklearn.linear_model import LinearRegression  
 from scipy.optimize import minimize
 import numpy as np
