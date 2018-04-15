@@ -1,0 +1,20 @@
+<!doctype html>
+<title>Doctors Demo</title>
+<form action="{{ url_for('index_page') }}" method=post>
+    <dl>
+        <dt>Введите специальности врача через запятую:
+        <br>
+        <dd style="margin-top: 5px"><textarea name=prof rows=3 cols=40>{{ proffesions }}</textarea>
+
+        <dt style="margin-top: 20px">Введите стаж врача в годах:
+        <br>
+        <dd style="margin-top: 5px"><textarea name=exp rows=1 cols=40>{{ experience }}</textarea>
+
+        <dt style="margin-top: 20px">Дополнительные параметры: <br>
+        <dd style="margin-top: 5px"><input type="checkbox" name="phd" value="true" {{ is_phd }}> Кандидат медицинских наук <br>
+        <dd style="margin-top: 5px"><input type="checkbox" name="fst_cat" value="true" {{ is_first_category }} > Врач первой категории<br>
+        <input type=submit value="Оценить">
+    </dl>
+</form>
+
+<br>Price prediction: {{ prediction }}
