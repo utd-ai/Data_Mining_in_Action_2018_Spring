@@ -7,6 +7,7 @@ import sys
 import imp
 import signal
 import pandas
+import traceback
 
 
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -40,7 +41,7 @@ class Checker(object):
             )
             return np.mean(cross_val_score(algo, self.data, self.target, cv=3, scoring='accuracy'))
         except:
-            print("Unexpected error:", sys.exc_info()[0])
+            traceback.print_exc()
             return None
 
 

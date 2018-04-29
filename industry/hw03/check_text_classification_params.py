@@ -1,6 +1,7 @@
 import os
-from text_classification_params_checker import Checker
 import json
+import re
+from text_classification_params_checker import Checker
 
 
 if __name__ == '__main__':
@@ -9,7 +10,7 @@ if __name__ == '__main__':
     results = {}
     for filename in os.listdir('results/text_classification_params'):
         if filename.endswith('.json'):
-            name = '_'.join(filename.split()[0].split('_')[-1:]).strip()
+            name = ''.join(re.split('text_classification_params_| - ', filename)[:-1]).strip()
             score = checker.check('results/text_classification_params/' + filename)
             print(name, score)
             if score is not None:

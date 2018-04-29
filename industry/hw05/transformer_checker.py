@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from sklearn.model_selection import cross_val_score
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import LabelEncoder
@@ -45,7 +47,10 @@ class Checker(object):
             )
             return cross_val_score(pipeline, self.X_data, self.y_data, cv=3).mean()
         except:
-            traceback.print_exception(*sys.exc_info())
+            try:
+                traceback.print_exception(*sys.exc_info())
+            except:
+                pass
             return None
 
 

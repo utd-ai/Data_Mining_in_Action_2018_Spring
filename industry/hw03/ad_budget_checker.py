@@ -24,7 +24,7 @@ class Checker(object):
         # ВНИМАНИЕ !!!
         # При тестировании seed будет изменён
         # Не переобучитесь!
-        random_gen = np.random.RandomState(42)
+        random_gen = np.random.RandomState(68)
         
         weights = (0.05 + random_gen.exponential(0.75, size=15)) * 2
         X_data = random_gen.uniform(0., 4, size=(40, 15))

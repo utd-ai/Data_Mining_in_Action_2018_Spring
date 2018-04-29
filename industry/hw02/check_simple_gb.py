@@ -1,6 +1,7 @@
 import os
-from gb_impl_checker import Checker
 import json
+import re
+from gb_impl_checker import Checker
 
 
 if __name__ == '__main__':
@@ -9,14 +10,14 @@ if __name__ == '__main__':
     results = {}
     for filename in os.listdir('dmia_gb_impl'):
         if filename.endswith('.py'):
-            name = '_'.join(filename.split()[0].split('_')[-1:]).strip()
+            name = ''.join(re.split('mygb_|gb_impl_| - ', filename)[:-1]).strip()
+            score = None
             score = checker.check('dmia_gb_impl/' + filename)
             print(name, score)
             if score is not None:
                 results[name] = score
             else:
                 scores[name] = 0.025
-
 
     best_neg_mse = max(results.values())
     for name in results:
