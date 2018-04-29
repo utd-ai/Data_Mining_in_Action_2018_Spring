@@ -1,32 +1,32 @@
 import os
 import json
 import re
-from ad_budget_checker import Checker
+from transformer_checker import Checker
 
 
 if __name__ == '__main__':
     checker = Checker()
     scores = {}
     results = {}
-    for filename in os.listdir('results/ad_budget'):
+    for filename in os.listdir('transformers'):
         if filename.endswith('.py'):
-            name = ''.join(re.split('ad_budget_| - ', filename)[:-1]).strip()
-            score = checker.check('results/ad_budget/' + filename)
+            name = ''.join(re.split('transformer_| - ', filename)[:-1]).strip()
+            score = checker.check('transformers/' + filename)
             print(name, score)
             if score is not None:
-                print('score is', max(round(score / 7.5, 2), 0.05))
+                print('score is', max(round(2 ** (10 * (score - 0.945)), 2), 0.05))
                 results[name] = score
             else:
                 scores[name] = 0.05
 
     best_accuracy = max(results.values())
     for name in results:
-        scores[name] = max(round(results[name] / 7.5, 2), 0.05)
+        scores[name] = max(round(2 ** (10 * (results[name] - 0.945)), 2), 0.05)
 
-    with open('ad_budget_results.json', 'w') as f:
+    with open('transformer_results.json', 'w') as f:
         json.dump(scores, f, indent=4)
 
-    with open('ad_budget_results.csv', 'w') as f:
+    with open('transformer_results.csv', 'w') as f:
         f.write('nickname, Score\n')
         for name in sorted(scores):
             f.write('{},{}\n'.format(name, scores[name]))

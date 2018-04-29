@@ -1,6 +1,7 @@
 #coding=utf-8
 
-from sklearn.linear_model import LinearRegression  
+from sklearn.linear_model import LinearRegression 
+from sklearn.ensemble import BaggingRegressor
 from scipy.optimize import minimize
 import numpy as np
 
@@ -23,4 +24,5 @@ class Optimizer:
         return best_budget
 
     def fit(self, X_data, y_data):
-        self.model = LinearRegression().fit(X_data, y_data)
+        #self.model = LinearRegression().fit(X_data, y_data)
+        self.model = BaggingRegressor(LinearRegression(), n_estimators=10, max_samples=1.0, max_features=10, bootstrap=False).fit(X_data, y_data)

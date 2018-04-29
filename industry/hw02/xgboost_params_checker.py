@@ -8,6 +8,7 @@ import signal
 import os
 import json
 import sys
+import traceback
 
 
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
@@ -39,7 +40,7 @@ class Checker(object):
                     cv=3
                 ))
         except:
-            print("Unexpected error:", sys.exc_info()[0])
+            traceback.print_exc()
             score = None
         
         return score
